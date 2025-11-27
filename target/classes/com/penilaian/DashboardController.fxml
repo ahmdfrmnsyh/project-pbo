@@ -1,0 +1,31 @@
+package com.penilaian;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+
+public class DashboardController {
+
+    @FXML
+    private Label lblWelcome;
+
+    // User yang lagi login (dikirim dari LoginController)
+    private LoginUser loginUser;
+
+    // Dipanggil dari LoginController setelah load Dashboard.fxml
+    public void setLoginUser(LoginUser user) {
+        this.loginUser = user;
+
+        if (user != null) {
+            lblWelcome.setText("Selamat datang, " 
+                    + user.getUsername() + " (" + user.getRole() + ")");
+        } else {
+            lblWelcome.setText("Selamat datang");
+        }
+    }
+
+    @FXML
+    private void initialize() {
+        // Optional: teks awal sebelum setLoginUser dipanggil
+        lblWelcome.setText("Selamat datang");
+    }
+}
